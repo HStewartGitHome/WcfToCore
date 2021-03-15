@@ -19,14 +19,25 @@ for this code was found on SoapCore GitHub page and especially examples.
 [GitHub - DigDes/SoapCore: SOAP extension for ASP.NET
 Core](https://github.com/DigDes/SoapCore)
 
-I took the following steps: 1. Created .Net Framework 4.72 project with WPF
-client and WPF Self Host. 2. Created .Net 5 WPF base on 4.72 project and use
-technique shown in examples 3. Once I got above working, I created SoapCore Host
-and made modifications for services 4. I tried this on Microsoft
-Blazor 1. Blazor Web assembly Hosted was first attempt, and it works fine 2. Blazor
-Web assembly - had trouble and needs more research but believe it related to Wasm
-not support ServiceModel 3. I also created Blazor Server 5. Also included is
-command line test application
+I took the following steps:
+
+1. Created .Net Framework 4.72 project with WPF client and WPF Self Host.
+
+2. Created .Net 5 WPF base on 4.72 project and use technique shown in examples.
+
+3. Once I got above working, I created SoapCore Host and made modifications for
+services
+
+4. I tried this on Microsoft Blazor projects
+
+>   1. Blazor Web assembly Hosted was first attempt, and it works fine.
+
+>   2. Blazor Web assembly - had trouble and needs more research but believe it
+>   related to Wasm not support ServiceModel.
+
+>   3. I also created Blazor Server
+
+5. Also included is command line test application.
 
 One special note, I was able to get both WCF Hosted and SoapCore Hosted to work
 at same service on clients, but the names of service must be same name space.
