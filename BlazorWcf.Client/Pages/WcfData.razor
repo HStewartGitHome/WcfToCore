@@ -1,0 +1,78 @@
+﻿@page "/wcfdata"
+
+@using System.Diagnostics
+@inject HelloWorldService service
+
+<h3>Wcf Data</h3>
+
+<button @onclick="OnAddSoap">Add Soap</button>
+<button @onclick="OnAddWCF">Add WCF</button>
+
+@if (string.IsNullOrWhiteSpace(errorString) == false)
+{
+<div class="h2">@errorString</div> }
+else if (currentData is null)
+{
+<div class="h4">Loading...</div> }
+else
+{
+
+<table class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th>Name</th>
+            <th>Hello</th>
+            <th>From</th>
+            <th>Count</th>
+            <th>Time</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <Virtualize Items="currentData" Context="s">
+            <tr>
+                <td>@s.NameString</td>
+                <td>@s.HelloString</td>
+                <td>@s.FromString</td>
+                <td>@s.Count.ToString()</td>
+                <td>@s.Time.ToString()</td>
+            </tr>
+        </Virtualize>
+    </tbody>
+</table>}
+
+@code { private List<DetailModel> currentData = null;
+    private string errorString;
+
+    protected override async Task OnInitializedAsync()
+    {
+        errorString = null;
+    }
+
+    public void OnAddSoap()
+    {
+        Stopwatch stopwatch = Stopwatch.StartNew();
+        DetailModel obj = service.Get("soap");
+        stopwatch.Stop();
+        int time = (int)stopwatch.ElapsedMilliseconds;
+        obj.Time = time;
+
+        if (currentData == null)
+            currentData = new List<DetailModel>();
+
+        currentData.Add(obj);
+    }
+
+    public void OnAddWCF()
+    {
+        Stopwatch stopwatch = Stopwatch.StartNew();
+        DetailModel obj = service.Get("WCF");
+        stopwatch.Stop();
+        int time = (int)stopwatch.ElapsedMilliseconds;
+        obj.Time = time;
+
+        if (currentData == null)
+            currentData = new List<DetailModel>();
+
+        currentData.Add(obj);
+    } }

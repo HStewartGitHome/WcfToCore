@@ -1,0 +1,45 @@
+﻿<Window x:Class="Wpf5.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:models="clr-namespace:Wpf5.Models"
+        mc:Ignorable="d"
+        Title="WPF 5 SoapCore Test" Height="450" Width="800">
+    <Window.Resources>
+        <ResourceDictionary Source="Resources/Rounded.xaml" />
+    </Window.Resources>
+    <Window.DataContext>
+        <models:MainViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid>
+            <Border BorderBrush="Black" BorderThickness="2" CornerRadius="8" Grid.Row="2" Margin="2,0,2,2">
+                <Border BorderBrush="White" BorderThickness="1" CornerRadius="8">
+                    <StackPanel>
+                        <Button Click="OnSayHello" Height="50" Style="{DynamicResource RoundCorner}" Margin="5">Say Hello</Button>
+                        <Button Click="OnSayHelloSoap" Height="50" Style="{DynamicResource RoundCorner}" Margin="5">Say Hello Soap</Button>
+                    </StackPanel>
+                </Border>
+            </Border>
+        </Grid>
+        <Grid Grid.Column="1">
+            <Border BorderBrush="Black" BorderThickness="2" CornerRadius="8" Grid.Row="2" Margin="2,0,2,2">
+                <Border BorderBrush="White" BorderThickness="1" CornerRadius="8">
+                    <Canvas Background="{DynamicResource {x:Static SystemColors.ControlLightBrushKey}}">
+                        <DataGrid x:Name="TheGrid"
+                        Canvas.Left="20" Canvas.Top="20"
+                        MaxHeight="570"
+                        HorizontalAlignment="Left"
+                        Margin="10,10,0,0"
+                        VerticalAlignment="Stretch"
+                        Loaded="DataGrid_Loaded" />
+                    </Canvas>
+                </Border>
+            </Border>
+        </Grid>
+    </Grid>
+</Window>
