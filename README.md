@@ -65,3 +65,6 @@ The following is the command line test application.
 The following output is from SoapCore host application.
 
 ![](media/ffd78d0213272c2cf9b173317e9ec488.png)
+
+
+Update 04/09/2021: I added Combo on WPF dialogs to switch theme from material base - round buttons to flat base buttons.  This was real simple only required setting Style on buttons to NULL.
